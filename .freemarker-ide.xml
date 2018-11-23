@@ -1,0 +1,9 @@
+<config>
+	<context-values>
+		<resource path="WebContent/WEB-INF/freemarker/test.ftl">
+			<value key="test" object-class="com.arjvik.jtesting.examviewparser.domain.TestBank"/>
+		</resource>
+	</context-values>
+	<macro-library>
+	</macro-library>
+</config>
