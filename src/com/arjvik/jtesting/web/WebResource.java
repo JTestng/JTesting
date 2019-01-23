@@ -15,6 +15,10 @@ import javax.ws.rs.core.UriInfo;
 import org.glassfish.jersey.process.internal.RequestScoped;
 import org.glassfish.jersey.server.mvc.Template;
 
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
+import com.mongodb.client.MongoDatabase;
+
 @Path("")
 @Produces(MediaType.TEXT_HTML)
 @RequestScoped
@@ -31,6 +35,16 @@ public class WebResource {
 	@Path("home") public Response home() {
 		return view();
 	}
+	
+	@GET
+	@Template(name="/debug")
+	@Path("debug") public Response debug() {
+		MongoClient mongoClient = new MongoClient(new MongoClientURI("mongodb://<dbuser>:<dbpassword>@ds115244.mlab.com:15244/jtesting"));
+		MongoDatabase database = mongoClient.getDatabase("jtesting");
+//		database.
+		return view("output", "my output");
+	}
+	
 
 	//-----------------------------------------------------------------------------------------------------------
 	
